@@ -1,0 +1,26 @@
+# --- .NET Build Artifacts ---
+[Bb]in/
+[Oo]bj/
+out/
+publish/
+
+# --- User-specific files (Visual Studio / VS Code) ---
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+
+# --- Test Artifacts ---
+TestResults/
+
+# --- Operating System Files ---
+.DS_Store
+Thumbs.db
+.directory
+
+# --- Sensitive Data ---
+# If you eventually use appsettings.json for secrets, 
+# you might want to ignore the production version
+appsettings.Development.json
+
