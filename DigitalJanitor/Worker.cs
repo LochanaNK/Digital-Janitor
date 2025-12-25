@@ -97,7 +97,17 @@ public class Worker : BackgroundService
                 string destinationDir = Path.Combine(_targetBase, category, year, month);
                 _fileSystem.CreateDirectory(destinationDir);
 
+                //duplicate file handling
+                string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
                 string destPath = Path.Combine(destinationDir, Path.GetFileName(filePath));
+                int count = 1;
+
+                while (_fileSystem.Exists(destPath))
+                {
+                    string newFileName = $"{fileNameOnly} ({count}){ext}";
+                    destPath = Path.Combine(destinationDir, newFileName);
+                    count++;
+                }
 
                 _fileSystem.Move(filePath, destPath, false);
                 _logger.LogInformation("Moved file: {File} to {Dest}", Path.GetFileName(filePath), category);
